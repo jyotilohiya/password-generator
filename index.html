@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A modern, secure, and customizable password generator.">
+    <title>Modern Password Generator</title>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="container">
+        <header>
+            <h1>Password Generator</h1>
+            <p>Create strong and secure passwords instantly.</p>
+        </header>
+
+        <section class="display-screen" aria-label="Generated Password Display">
+            <div class="input-container">
+                <input type="text" id="password-display" readonly aria-label="Generated Password">
+                <button id="copy-btn" title="Copy to Clipboard" aria-label="Copy password to clipboard">
+                    <i class="fa-regular fa-copy"></i>
+                </button>
+            </div>
+            <div class="strength-container" aria-live="polite">
+                <div class="strength-bar" id="strength-bar" data-strength="medium"></div>
+                <span id="strength-text" class="medium">Medium</span>
+            </div>
+        </section>
+
+        <section class="controls-panel" aria-label="Password Configuration Options">
+            <!-- Length Control -->
+            <div class="control-group length-control">
+                <div class="length-header">
+                    <label for="length-slider">Password Length</label>
+                    <span id="length-val">16</span>
+                </div>
+                <input type="range" id="length-slider" min="6" max="32" value="16" aria-label="Adjust password length">
+            </div>
+
+            <!-- Checkbox Controls -->
+            <div class="control-group checkbox-controls">
+                <label class="checkbox-container">
+                    <input type="checkbox" id="uppercase-cb" checked>
+                    <span class="checkmark"></span>
+                    Include Uppercase (A-Z)
+                </label>
+                <label class="checkbox-container">
+                    <input type="checkbox" id="lowercase-cb" checked>
+                    <span class="checkmark"></span>
+                    Include Lowercase (a-z)
+                </label>
+                <label class="checkbox-container">
+                    <input type="checkbox" id="numbers-cb" checked>
+                    <span class="checkmark"></span>
+                    Include Numbers (0-9)
+                </label>
+                <label class="checkbox-container">
+                    <input type="checkbox" id="symbols-cb" checked>
+                    <span class="checkmark"></span>
+                    Include Symbols (@#$%)
+                </label>
+                <label class="checkbox-container">
+                    <input type="checkbox" id="exclude-ambiguous-cb">
+                    <span class="checkmark"></span>
+                    Exclude Ambiguous (i, l, 1, L, o, 0, O)
+                </label>
+            </div>
+
+            <!-- Generate Action -->
+            <button id="generate-btn" class="generate-btn">
+                Generate Password
+            </button>
+        </section>
+    </main>
+
+    <!-- Toast notification for copy action -->
+    <div id="toast" class="toast" aria-live="assertive">Copied to clipboard!</div>
+
+    <!-- Custom Script -->
+    <script src="script.js"></script>
+</body>
+</html>
